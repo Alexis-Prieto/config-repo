@@ -4,7 +4,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
 mensaje:
-  texto: ConfiguraciÃ³n obtenida desde Config Server para Pedido Service
+  texto: Configuración obtenida desde Config Server para Pedido Service
 lab14:
   config-origin: github-config-repo
 
