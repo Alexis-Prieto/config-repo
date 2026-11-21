@@ -1,0 +1,21 @@
+server:
+  port: 9092
+
+spring:
+  datasource:
+    url: ${CATEGORIA_PROD_DB_URL}
+    username: ${CATEGORIA_PROD_DB_USERNAME}
+    password: ${CATEGORIA_PROD_DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+empresa:
+  ambiente: produccion
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_PROD_URL}

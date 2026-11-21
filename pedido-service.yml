@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: pedido-service
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+mensaje:
+  texto: ConfiguraciÃ³n obtenida desde Config Server para Pedido Service
+lab14:
+  config-origin: github-config-repo
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      clienteService:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        recordExceptions:
+          - com.tecsup.services.FalloTemporal
+        ignoreExceptions:
+          - feign.FeignException
+          - io.github.resilience4j.bulkhead.BulkheadFullException
+        eventConsumerBufferSize: 100
+      productoService:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        recordExceptions:
+          - com.tecsup.services.FalloTemporal
+        ignoreExceptions:
+          - feign.FeignException
+          - io.github.resilience4j.bulkhead.BulkheadFullException
+        eventConsumerBufferSize: 100
+  retry:
+    instances:
+      clienteRetry:
+        maxAttempts: 3
+        waitDuration: 2s
+        retryExceptions:
+          - com.tecsup.services.FalloTemporal
+        eventConsumerBufferSize: 100
+  bulkhead:
+    instances:
+      productoBulkhead:
+        maxConcurrentCalls: 2
+        maxWaitDuration: 1s
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers,circuitbreakerevents,retries,retryevents,bulkheads

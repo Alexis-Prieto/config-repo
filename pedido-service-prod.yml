@@ -1,0 +1,21 @@
+server:
+  port: 9094
+
+spring:
+  datasource:
+    url: ${PEDIDO_PROD_DB_URL}
+    username: ${PEDIDO_PROD_DB_USERNAME}
+    password: ${PEDIDO_PROD_DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+empresa:
+  ambiente: produccion
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_PROD_URL}

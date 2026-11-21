@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: cliente-service
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+mensaje:
+  texto: ConfiguraciÃ³n obtenida desde Config Server para Cliente Service
+lab14:
+  config-origin: github-config-repo
