@@ -10,7 +10,6 @@ lab14:
 
 resilience4j:
   circuitbreaker:
-    circuitBreakerAspectOrder: 2
     instances:
       categoriaService:
         registerHealthIndicator: true
@@ -33,7 +32,6 @@ resilience4j:
           - com.tecsup.services.FalloTemporal
         eventConsumerBufferSize: 100
   bulkhead:
-    bulkheadAspectOrder: 1
     instances:
       categoriaBulkhead:
         maxConcurrentCalls: 2
